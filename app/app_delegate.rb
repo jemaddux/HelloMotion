@@ -6,7 +6,7 @@ class AppDelegate
 
     @blue_view = UIView.alloc.initWithFrame(CGRectMake(10, 10, 100, 100))
     @blue_view.backgroundColor = UIColor.blueColor
-    @window.assSubview(@blue_view)
+    @window.addSubview(@blue_view)
 
     true
   end
