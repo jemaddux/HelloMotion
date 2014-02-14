@@ -31,11 +31,11 @@ class AppDelegate
 
   def animate_to_next_point
     @current_index += 1
-
-    # keep current index in range
     @current_index = @current_index % @points.count
 
     UIView.animateWithDuration(2,
+      delay: 1,
+      options: UIViewAnimationOptionCurveLinear,
       animations: lambda {
         @view.frame = [@points[@current_index], [100, 100]]
       },
