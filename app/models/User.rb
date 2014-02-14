@@ -9,4 +9,19 @@ class User
       self.send("#{key}=", value) if PROPERTIES.member? key
     }
   end
+
+  def initWithCoder(decoder)
+    self.init
+    PROPERTIES.each { |prop|
+      value = decoder.decodeObjectForKey(prop.to_s)
+      self.send((prop.to_s + "=").to_s, value) if value
+    }
+    self
+  end
+
+  def encodeWithCoder(encoder)
+    PROPERTIES.each {|prop|
+      encoder.encodeObject(Self.send(prop), forKey: prop.to_s)
+    }
+  end
 end
